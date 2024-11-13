@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.firework {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%);
+  animation: explode 1s ease-out forwards;
+}
+
+.firework::before,
+.firework::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  aspect-ratio: 1;
+  box-shadow: 
+    -0.5rem -3rem 2rem #ff3377,
+    0.5rem -3rem 2rem #ffdd33,
+    -3rem -0.5rem 2rem #33ff77,
+    3rem -0.5rem 2rem #33ddff,
+    -3rem 0.5rem 2rem #ff33dd,
+    3rem 0.5rem 2rem #3377ff,
+    -0.5rem 3rem 2rem #ff7733,
+    0.5rem 3rem 2rem #33ffaa;
+  animation: sparkle 1s ease-out infinite;
+}
+
+.firework::after {
+  animation-delay: 0.1s;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(180deg);
+    opacity: 0;
+  }
+}
